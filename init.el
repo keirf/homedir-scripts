@@ -109,19 +109,8 @@
 
 (global-set-key "\^z" 'nil) ; C-z don't iconify
 
-(fset 'simple-cite
-      [(control x) r t > space return])
-(fset 'simple-cite-and-fill
-      [(control x) r t > space return (meta q)])
-(fset 'simple-indent
-      [(control x) r t space space return])
-
 (global-set-key [home] 'beginning-of-buffer)
 (global-set-key [end]  'end-of-buffer)
-
-(global-set-key [f5] 'simple-cite)           ;F5 cite selected region with "> "
-(global-set-key [f6] 'simple-cite-and-fill)  ;F6 cite like f5, then fill
-(global-set-key [f7] 'simple-indent)         ;F7 indent region 2 spaces
 
 (global-set-key "\C-\\" 'c-backslash-region)
 
@@ -135,13 +124,6 @@
 
 ;;; Turn on paragraph filling when going into text mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-
-;;; Editing a file ending in .ml puts emacs into ML mode
-(autoload 'sml-mode "sml-mode" "Major mode for editing SML." t)
-(setq auto-mode-alist (cons '("\\.ml$" . sml-mode) auto-mode-alist))
-
-;;; .S is the same as .s
-(setq auto-mode-alist (cons '("\\.S$" . asm-mode) auto-mode-alist))
 
 ;;; Autoload the comment minor mode when comment-mode is called.
 (autoload 'comment-mode "comment-mode" "Minor mode for sane C commenting." t)
