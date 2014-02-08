@@ -108,8 +108,6 @@
 (global-set-key "\C-o" '(lambda () (interactive) (real-next-window)))
 (global-set-key "\C-p" '(lambda () (interactive) (real-prev-window)))
 
-;(global-set-key "\C-cr" 'mh-rmail)
-
 (global-set-key "\^z" 'nil) ; C-z don't iconify
 
 (fset 'simple-cite
@@ -131,9 +129,6 @@
 (cond ((not window-system)
        (keyboard-translate ?\C-? ?\C-h)
        (global-set-key "\C-h" 'backward-delete-char)))
-
-;(require 'my-rmail)
-;(require 'rmime)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; different file mode type things
