@@ -367,7 +367,7 @@
     (beginning-of-line)
 
     ;; 1. valid comment lines contain a '*'
-    (if (not (limited-re-search-forward "^[ \t]*/?* ")) nil
+    (if (not (limited-re-search-forward "^[ \t]*/?\\* ")) nil
 
       (if (and (limited-search-forward "*/")
                (limited-search-backward "/*"))
