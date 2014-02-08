@@ -140,12 +140,6 @@
 (autoload 'sml-mode "sml-mode" "Major mode for editing SML." t)
 (setq auto-mode-alist (cons '("\\.ml$" . sml-mode) auto-mode-alist))
 
-;;; Shell scripts
-(autoload 'sh-mode "sh-mode" "Major mode for editing shell scripts" t)
-(setq auto-mode-alist (cons '("\\.sh$" . sh-mode) auto-mode-alist))
-(setq interpreter-mode-alist (cons '("sh" . sh-mode) interpreter-mode-alist))
-(setq interpreter-mode-alist (cons '("bash" . sh-mode) interpreter-mode-alist))
-
 ;;; .S is the same as .s
 (setq auto-mode-alist (cons '("\\.S$" . asm-mode) auto-mode-alist))
 
