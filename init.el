@@ -220,6 +220,3 @@
 
 (global-unset-key [M-tab])
 (global-set-key [M-tab] 'dabbrev-expand)
-
-;(setq vc-path "/usr/groups/netos/ix86_linux/bitkeeper/")
-;(load "bk.el")
