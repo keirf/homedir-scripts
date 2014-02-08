@@ -34,7 +34,6 @@
        (set-face-foreground (quote highlight) "white")
        (set-cursor-color "white")
        (load "my-font-lock")
-       (require 'caml-font)
        (cond ((eq (x-display-pixel-width) 1364) (load "my-frames-1364.el"))
              (t (load "my-frames-fvwm.el")))
        ))
@@ -146,11 +145,6 @@
 (setq auto-mode-alist (cons '("\\.sh$" . sh-mode) auto-mode-alist))
 (setq interpreter-mode-alist (cons '("sh" . sh-mode) interpreter-mode-alist))
 (setq interpreter-mode-alist (cons '("bash" . sh-mode) interpreter-mode-alist))
-
-;; CAML
-(setq auto-mode-alist (cons '("\\.ml[iylp]?$" . caml-mode) auto-mode-alist))
-(autoload 'caml-mode "caml" "Major mode for editing Caml code." t)
-(autoload 'run-caml "inf-caml" "Run an inferior Caml process." t)
 
 ;;; .S is the same as .s
 (setq auto-mode-alist (cons '("\\.S$" . asm-mode) auto-mode-alist))
