@@ -152,12 +152,6 @@
 (autoload 'caml-mode "caml" "Major mode for editing Caml code." t)
 (autoload 'run-caml "inf-caml" "Run an inferior Caml process." t)
 
-;;; Python
-(autoload 'python-mode "python-mode" "Python editing mode." t)
-(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-(setq interpreter-mode-alist (cons '("python" . python-mode)
-                                   interpreter-mode-alist))
-
 ;;; .S is the same as .s
 (setq auto-mode-alist (cons '("\\.S$" . asm-mode) auto-mode-alist))
 
