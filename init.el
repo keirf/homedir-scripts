@@ -158,20 +158,11 @@
 (setq interpreter-mode-alist (cons '("python" . python-mode)
                                    interpreter-mode-alist))
 
-;;; Tracing
-(autoload 'trace-mode "trace-mode" "Major mode for monitoring trace output." t)
-(setq auto-mode-alist (cons '("\\.trc$" . trace-mode) auto-mode-alist))
-
 ;;; .S is the same as .s
 (setq auto-mode-alist (cons '("\\.S$" . asm-mode) auto-mode-alist))
 
 ;;; Autoload the comment minor mode when comment-mode is called.
 (autoload 'comment-mode "comment-mode" "Minor mode for sane C commenting." t)
-
-(add-hook 'trace-mode-hook '(lambda ()
-        (setq trace-mode-frame-width 160)
-        (setq trace-mode-reset-width  80)
-        (linemenu-initialize)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
