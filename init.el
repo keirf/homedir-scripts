@@ -35,6 +35,7 @@
        (set-cursor-color "white")
        (load "my-font-lock")
        (cond ((eq (x-display-pixel-width) 1364) (load "my-frames-1364.el"))
+             ((eq (x-display-pixel-width) 1600) (load "my-frames-1600.el"))
              (t (load "my-frames-fvwm.el")))
        ))
 

@@ -2,7 +2,7 @@
 (defvar kaf::left-frm  nil "Left hand frame")
 (defvar kaf::right-frm nil "Right hand frame")
 
-(let* ((kaf::frame-height 56)
+(let* ((kaf::frame-height 57)
        (kaf::left-gap 70)
        (kaf::top-gap 0)
        (kaf::minibuffer-props
@@ -16,12 +16,12 @@
 	      (cons 'left kaf::left-gap)
 	      (cons 'width 80)
 	      (cons 'height kaf::frame-height)
-	      (cons 'minibuffer nil)
+;	      (cons 'minibuffer nil)
 	      (cons 'user-position 't)))
        (kaf::right-frm-props
         (list (cons 'width 80)
               (cons 'height kaf::frame-height)
-              (cons 'minibuffer nil)
+;              (cons 'minibuffer nil)
               (cons 'user-position 't)))
        )
   (setq initial-frame-alist    kaf::left-frm-props)
