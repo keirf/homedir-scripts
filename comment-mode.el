@@ -49,6 +49,8 @@
 (make-variable-buffer-local 'comment-right-margin)
 (set-default 'comment-right-margin 79)
 
+(defvar linux-mode nil)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Macros:
 (defsubst call-original-binding (x)     
@@ -136,12 +138,12 @@
     (comment-solid-line start-col nil)
     ; Now draw second line of comment box
     (insert-char ?\n 1)
-    (insert-char 32 start-col)
+    (start-line start-col)
     (insert " * ")
     (setq temp (point))
     ; Final line!
     (insert-char ?\n 1)
-    (insert-char 32 start-col)
+    (start-line start-col)
     (insert " */")
     ; Now go to the comment start point
     (goto-char temp))
@@ -156,11 +158,11 @@
   (interactive)
   (let (temp (start-col (current-column)))
     (insert "/*\n")
-    (insert-char 32 start-col)
+    (start-line start-col)
     (insert " * ")
     (setq temp (point))
     (insert-char ?\n 1)
-    (insert-char 32 start-col)
+    (start-line start-col)
     (insert " */")
     (goto-char temp))
 )
@@ -179,10 +181,14 @@
           (progn
             (limited-search-forward "*/")
             (delete-char -2)
+            (while (eq (preceding-char) 32) (delete-char -1))
             (insert-char ?\n 1)
-            (insert-char 32 start-col)
+            (start-line start-col)
             (insert " * ")
             (let ((tmp (point)))
+              (when linux-mode
+                (insert-char ?\n 1)
+                (start-line start-col))
               (insert " */")
               (goto-char tmp)))
         (end-of-line)
@@ -190,13 +196,13 @@
             (progn
               (delete-char 2)
               (insert-char ?\n 1)
-              (insert-char 32 start-col)
+              (start-line start-col)
               (insert " * ")
               (let ((tmp (point)))
                 (insert " */")
                 (goto-char tmp)))
           (insert-char ?\n 1)
-          (insert-char 32 start-col)
+          (start-line start-col)
           (insert " * ")))))
 )
 
@@ -278,7 +284,8 @@
         (beginning-of-line)
         (set-marker region-start (point))
         (forward-line 1))
-      (while (limited-re-search-forward "^[ \t]*\\*")
+      (while (limited-re-search-forward "^[ \t]*\\* ")
+        (backward-char 1)
         (delete-char -1)
         (forward-line 1)
         (set-marker region-end (point)))
@@ -397,7 +404,7 @@
 ;;; Creates a /********* style comment line on the current line.
 ;;; If <spaces-prefix> is not nil, <start-col> spaces are inserted first.
 (defun comment-solid-line (start-col spaces-prefix)
-  (if spaces-prefix (insert-char 32 start-col))
+  (if spaces-prefix (start-line start-col))
   (insert-char ?/ 1)
   (insert-char ?* (- comment-right-margin start-col 1))
 )
@@ -474,7 +481,8 @@
             (forward-line -1)
             (end-of-line)
             (insert-char ?\n 1)
-            (insert-char 32 sc))
+            (start-line sc)
+            (if linux-mode (insert-char 32 2))) ; Linux mode: Why? :)
           (yank)
           (unless (eq (preceding-char) 32) (insert-char 32 1))
           (goto-char (mark))
@@ -494,3 +502,10 @@
         
       (forward-line 1)))
 )
+
+(defun start-line (sc)
+  (if linux-mode
+      (insert-char 9 (/ sc 8))
+    (insert-char 32 sc))
+)
+
