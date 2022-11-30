@@ -1,0 +1,4 @@
+ATTRS{manufacturer}=="SEGGER", ATTRS{product}=="J-Link", \
+    SUBSYSTEMS=="usb", MODE:="0666"
+ATTRS{manufacturer}=="SEGGER", ATTRS{product}=="J-Link", \
+    KERNEL=="ttyACM*", MODE:="0666"

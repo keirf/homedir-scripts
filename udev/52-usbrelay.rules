@@ -1,0 +1,2 @@
+# UDEV Rules for USB Relay
+ATTRS{idProduct}=="16c0", ATTRS{idVendor}=="05df", MODE="666", GROUP="plugdev"
