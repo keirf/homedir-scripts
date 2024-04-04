@@ -1,2 +1,0 @@
-# UDEV Rules for ST Link v2
-ATTRS{idProduct}=="3748", ATTRS{idVendor}=="0483", MODE="666", GROUP="plugdev"
